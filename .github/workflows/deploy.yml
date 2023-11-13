@@ -1,7 +1,10 @@
 name: gradle deployment
 
 on:
-  workflow_call:
+    push:
+      branches:
+        - main
+    workflow_call:
 
 jobs:
  Deploy:
@@ -13,7 +16,7 @@ jobs:
         with: 
           repository: prema6396/Argocd
           ref: main
-          token: ${{secrets.GIT_PAT}}
+          token: ${{ secrets.GIT_PAT }}
           
       - name: deploy
         run: |
@@ -26,4 +29,5 @@ jobs:
           git push origin HEAD:main
           
         env:
+
           GIT_PAT: ${{secrets.GIT_PAT}}
