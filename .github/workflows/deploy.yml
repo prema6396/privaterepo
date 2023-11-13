@@ -16,8 +16,8 @@ jobs:
         with: 
           repository: prema6396/Argocd
           
-
-          token: ${{ secrets.GIT_PAT }}
+          ref: main
+          token:  ${{ secrets.GITHUB_TOKEN }} 
           
       - name: deploy
         run: |
@@ -31,4 +31,4 @@ jobs:
           
         env:
 
-          GIT_PAT: ${{secrets.GIT_PAT}}
+          GIT_PAT: ${{ secrets.GITHUB_TOKEN }}
